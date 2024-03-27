@@ -238,7 +238,7 @@ SELECT * FROM asignatura asi LEFT JOIN profesor prf USING (id_profesor) WHERE pr
 
 SELECT * FROM departamento d LEFT JOIN profesor prf ON d.id = prf.id_departamento LEFT JOIN asignatura asi ON prf.id_profesor = asi.id_profesor LEFT JOIN curso_escolar ce ON asi.curso = ce.id WHERE asi.id IS NULL;
 
--- CONSULTAS RESUMEN ------------------------------------------------------------------------------------------------------------------ CONSULTAS RESUMEN
+-- Consultas resumen
 
 -- 1. Retorna el nombre total d'alumnes que hi ha.
 
