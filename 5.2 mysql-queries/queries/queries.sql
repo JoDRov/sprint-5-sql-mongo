@@ -1,5 +1,5 @@
--- QUERIES TIENDA----------------------------------------------------------------------------------------------------------------------------------------------------------------------QUERIES TIENDA
-/*
+-- QUERIES TIENDA ------------------------------------------------------------------------------------------------------------------ QUERIES TIENDA
+
 USE tienda;
 
 -- 1. Llista el nom de tots els productes que hi ha en la taula producto.
@@ -166,10 +166,14 @@ SELECT * FROM fabricante f LEFT JOIN producto p ON f.codigo = p.codigo_fabricant
 
 -- 40. Retorna tots els productes de la base de dades que tenen un preu major o igual al producte més car del fabricant Lenovo.
 
+SELECT * FROM producto WHERE precio >= (SELECT MAX(precio) FROM producto WHERE codigo_fabricante = (SELECT codigo FROM fabricante WHERE nombre = 'Lenovo'));
+
 -- 41. Llesta tots els productes del fabricant Asus que tenen un preu superior al preu mitjà de tots els seus productes.
-*/
--- QUERIES UNIVERSITAT----------------------------------------------------------------------------------------------------------------------------------------------------------------------QUERIES UNIVERSITAT
-/*
+
+SELECT * FROM producto WHERE codigo_fabricante = (SELECT codigo FROM fabricante WHERE nombre = 'Asus') AND precio > (SELECT AVG(precio) FROM producto WHERE codigo_fabricante = (SELECT codigo FROM fabricante WHERE nombre = 'Asus'));
+
+-- QUERIES UNIVERSITAT ------------------------------------------------------------------------------------------------------------------ QUERIES UNIVERSITAT
+
 USE universidad;
 
 -- 1. Retorna un llistat amb el primer cognom, segon cognom i el nom de tots els/les alumnes. El llistat haurà d'estar ordenat alfabèticament de menor a major pel primer cognom, segon cognom i nom.
@@ -207,9 +211,75 @@ SELECT d.nombre AS nombre_departamento FROM profesor prf JOIN departamento d ON 
 -- 9. Retorna un llistat amb tots els alumnes que s'han matriculat en alguna assignatura durant el curs escolar 2018/2019.
 
 SELECT * FROM alumno_se_matricula_asignatura asma JOIN persona p ON asma.id_alumno = p.id JOIN curso_escolar c ON asma.id_curso_escolar = c.id WHERE c.anyo_inicio BETWEEN 2018 AND 2019;
-*/
+
 -- Resol les 6 següents consultes utilitzant les clàusules LEFT JOIN i RIGHT JOIN.
 
--- 1. Retorna un llistat amb els noms de tots els professors/es i els departaments que tenen vinculats. El llistat també ha de mostrar aquells professors/es que no tenen cap departament associat. 
--- El llistat ha de retornar quatre columnes, nom del departament, primer cognom, segon cognom i nom del professor/a. 
--- El resultat estarà ordenat alfabèticament de menor a major pel nom del departament, cognoms i el nom.
+-- 1. Retorna un llistat amb els noms de tots els professors/es i els departaments que tenen vinculats. El llistat també ha de mostrar aquells professors/es que no tenen cap departament associat. El llistat ha de retornar quatre columnes, nom del departament, primer cognom, segon cognom i nom del professor/a. El resultat estarà ordenat alfabèticament de menor a major pel nom del departament, cognoms i el nom.
+
+SELECT d.nombre AS nombre_departamento, p.apellido1, p.apellido2, p.nombre, p.tipo FROM persona p LEFT JOIN departamento d USING (id) WHERE tipo = 'profesor' ORDER BY d.nombre ASC, p.apellido1 ASC, p.apellido2 ASC, p.nombre ASC;
+
+-- 2. Retorna un llistat amb els professors/es que no estan associats a un departament.
+
+SELECT * FROM persona p LEFT JOIN departamento d USING (id) WHERE tipo = 'profesor' AND d.nombre IS NULL;
+
+-- 3. Retorna un llistat amb els departaments que no tenen professors/es associats.
+
+SELECT * FROM departamento d LEFT JOIN profesor prf ON d.id = prf.id_departamento WHERE prf.id_profesor IS NULL;
+
+-- 4. Retorna un llistat amb els professors/es que no imparteixen cap assignatura.
+
+SELECT * FROM profesor prf LEFT JOIN persona p ON prf.id_profesor = p.id LEFT JOIN asignatura asi USING (id_profesor) WHERE asi.nombre IS NULL;
+
+-- 5. Retorna un llistat amb les assignatures que no tenen un professor/a assignat.
+
+SELECT * FROM asignatura asi LEFT JOIN profesor prf USING (id_profesor) WHERE prf.id_profesor IS NULL;
+
+-- 6. Retorna un llistat amb tots els departaments que no han impartit assignatures en cap curs escolar.
+
+SELECT * FROM departamento d LEFT JOIN profesor prf ON d.id = prf.id_departamento LEFT JOIN asignatura asi ON prf.id_profesor = asi.id_profesor LEFT JOIN curso_escolar ce ON asi.curso = ce.id WHERE asi.id IS NULL;
+
+-- CONSULTAS RESUMEN ------------------------------------------------------------------------------------------------------------------ CONSULTAS RESUMEN
+
+-- 1. Retorna el nombre total d'alumnes que hi ha.
+
+SELECT COUNT(*) FROM persona WHERE tipo = 'alumno';
+
+-- 2. Calcula quants alumnes van néixer en 1999.
+
+SELECT COUNT(*) FROM persona WHERE tipo = 'alumno' AND fecha_nacimiento BETWEEN '1999-01-01' AND '2000-01-01';
+
+-- 3. Calcula quants professors/es hi ha en cada departament. El resultat només ha de mostrar dues columnes, una amb el nom del departament i una altra amb el nombre de professors/es que hi ha en aquest departament. El resultat només ha d'incloure els departaments que tenen professors/es associats i haurà d'estar ordenat de major a menor pel nombre de professors/es.
+
+SELECT d.nombre AS nombre_departamento, COUNT(prf.id_profesor) AS numero_de_profesores FROM departamento d JOIN profesor prf ON d.id = prf.id_departamento GROUP BY d.nombre HAVING COUNT(prf.id_profesor) <> 0 ORDER BY numero_de_profesores DESC;
+
+-- 4. Retorna un llistat amb tots els departaments i el nombre de professors/es que hi ha en cadascun d'ells. Tingui en compte que poden existir departaments que no tenen professors/es associats. Aquests departaments també han d'aparèixer en el llistat.
+
+SELECT d.nombre AS nombre_departamento, COUNT(prf.id_profesor) AS numero_de_profesores FROM departamento d LEFT JOIN profesor prf ON d.id = prf.id_departamento GROUP BY d.nombre;
+
+-- 5. Retorna un llistat amb el nom de tots els graus existents en la base de dades i el nombre d'assignatures que té cadascun. Tingues en compte que poden existir graus que no tenen assignatures associades. Aquests graus també han d'aparèixer en el llistat. El resultat haurà d'estar ordenat de major a menor pel nombre d'assignatures.
+
+SELECT g.nombre AS nombre_grado, COUNT(asi.nombre) AS numero_asignaturas FROM grado g LEFT JOIN asignatura asi ON g.id = asi.id_grado GROUP BY g.nombre ORDER BY numero_asignaturas DESC;
+
+-- 6. Retorna un llistat amb el nom de tots els graus existents en la base de dades i el nombre d'assignatures que té cadascun, dels graus que tinguin més de 40 assignatures associades.
+
+SELECT g.nombre AS nombre_grado, COUNT(asi.nombre) AS numero_asignaturas FROM grado g JOIN asignatura asi ON g.id = asi.id_grado GROUP BY g.nombre HAVING COUNT(asi.nombre) > 40;
+
+-- 7. Retorna un llistat que mostri el nom dels graus i la suma del nombre total de crèdits que hi ha per a cada tipus d'assignatura. El resultat ha de tenir tres columnes: nom del grau, tipus d'assignatura i la suma dels crèdits de totes les assignatures que hi ha d'aquest tipus.
+
+SELECT g.nombre AS nombre_grado, asi.tipo AS tipo_asignatura, SUM(asi.creditos) AS suma_creditos FROM grado g JOIN asignatura asi ON g.id = asi.id_grado GROUP BY g.nombre, asi.tipo HAVING SUM(asi.creditos) > 0;
+
+-- 8. Retorna un llistat que mostri quants alumnes s'han matriculat d'alguna assignatura en cadascun dels cursos escolars. El resultat haurà de mostrar dues columnes, una columna amb l'any d'inici del curs escolar i una altra amb el nombre d'alumnes matriculats.
+
+SELECT ce.anyo_inicio, COUNT(DISTINCT asma.id_alumno) AS alumnes_matriculats FROM alumno_se_matricula_asignatura asma JOIN curso_escolar ce ON asma.id_curso_escolar = ce.id GROUP BY anyo_inicio;
+
+-- 9. Retorna un llistat amb el nombre d'assignatures que imparteix cada professor/a. El llistat ha de tenir en compte aquells professors/es que no imparteixen cap assignatura. El resultat mostrarà cinc columnes: id, nom, primer cognom, segon cognom i nombre d'assignatures. El resultat estarà ordenat de major a menor pel nombre d'assignatures.
+
+SELECT per.id AS id_profesor, per.nombre, per.apellido1, per.apellido2, COUNT(asi.id) AS numero_asignaturas FROM persona per LEFT JOIN profesor prf  ON per.id = prf.id_profesor LEFT JOIN asignatura asi ON prf.id_profesor = asi.id_profesor GROUP BY per.id, per.nombre, per.apellido1, per.apellido2 ORDER BY numero_asignaturas DESC;
+
+-- 10. Retorna totes les dades de l'alumne/a més jove.
+
+SELECT * FROM persona per WHERE fecha_nacimiento = (SELECT MIN(fecha_nacimiento) FROM persona WHERE tipo = 'alumno');
+
+-- 11. Retorna un llistat amb els professors/es que tenen un departament associat i que no imparteixen cap assignatura.
+
+SELECT * FROM profesor prf JOIN departamento d ON prf.id_departamento = d.id LEFT JOIN asignatura asi USING (id_profesor) WHERE prf.id_departamento IS NOT NULL AND asi.id IS NULL;
