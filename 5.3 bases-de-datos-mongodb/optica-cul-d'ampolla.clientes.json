@@ -1,0 +1,16 @@
+[{
+  "_id": {
+    "$oid": "660a0a64dceb7948eccae40c"
+  },
+  "nombre": "Manolo",
+  "apellido": "Diaz",
+  "calle": 6,
+  "numero": 4,
+  "piso": 2,
+  "puerta": 2,
+  "ciudad": "RoadSpeed",
+  "codigo_postal": 38210,
+  "pais": "España",
+  "telefono": 372819465,
+  "correo_electronico": "manolin@gmail.com"
+}]

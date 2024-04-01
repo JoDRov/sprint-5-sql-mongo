@@ -1,0 +1,90 @@
+[{
+  "_id": {
+    "$oid": "660a0048dceb7948eccae3f0"
+  },
+  "nombre": "Missandtrendy Sunglases",
+  "calle": "Patata",
+  "numero": 4,
+  "piso": 2,
+  "puerta": 1,
+  "ciudad": "Ivenwill",
+  "codigo_postal": 68238,
+  "pais": "España",
+  "telefono": 738219237,
+  "fax": {
+    "$numberLong": "2817238219029"
+  },
+  "nif": "219341022T"
+},
+{
+  "_id": {
+    "$oid": "660a0119dceb7948eccae3f2"
+  },
+  "nombre": "Pherhaps&CO",
+  "calle": "Tocino",
+  "numero": 3,
+  "piso": 7,
+  "puerta": 2,
+  "ciudad": "Corpenius",
+  "codigo_postal": 56227,
+  "pais": "España",
+  "telefono": 721849273,
+  "fax": {
+    "$numberLong": "2318763315241"
+  },
+  "nif": "893627369G"
+},
+{
+  "_id": {
+    "$oid": "660a0120dceb7948eccae3f4"
+  },
+  "nombre": "Cint Water",
+  "calle": "Acuoso",
+  "numero": 27,
+  "piso": 6,
+  "puerta": 4,
+  "ciudad": "Somewhere",
+  "codigo_postal": 27381,
+  "pais": "España",
+  "telefono": 632897467,
+  "fax": {
+    "$numberLong": "5753267487351"
+  },
+  "nif": "823619678P"
+},
+{
+  "_id": {
+    "$oid": "660a015ddceb7948eccae3f6"
+  },
+  "nombre": "Prosound",
+  "calle": "Rocoso",
+  "numero": 45,
+  "piso": 6,
+  "puerta": 3,
+  "ciudad": "Ivenwill",
+  "codigo_postal": 58238,
+  "pais": "España",
+  "telefono": 837927374,
+  "fax": {
+    "$numberLong": "4783256264894"
+  },
+  "nif": "832917389Z"
+},
+{
+  "_id": {
+    "$oid": "660a018adceb7948eccae3f8"
+  },
+  "nombre": "Nextround",
+  "calle": "Piruleta",
+  "numero": 1,
+  "piso": 2,
+  "puerta": 3,
+  "ciudad": "Stormwell",
+  "codigo_postal": 27673,
+  "pais": "España",
+  "telefono": 836710964,
+  "fax": {
+    "$numberLong": "9627657823763"
+  },
+  "nif": "738219647T"
+}]
