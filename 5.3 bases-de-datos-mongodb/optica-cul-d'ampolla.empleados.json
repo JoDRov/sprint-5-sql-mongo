@@ -1,0 +1,75 @@
+[{
+  "_id": {
+    "$oid": "660c08ace09f26858a9c7543"
+  },
+  "nombre": "Juanjo",
+  "apellido": "Amoros",
+  "calle": "solsticio",
+  "numero": 4,
+  "piso": 6,
+  "puerta": 3,
+  "ciudad": "Viladecans",
+  "codigo_postal": 88840,
+  "telefono": 743826487,
+  "correo_electronico": "juanjito@gmail.com"
+},
+{
+  "_id": {
+    "$oid": "660c0902e09f26858a9c7545"
+  },
+  "nombre": "John",
+  "apellido": "Salchichon",
+  "calle": "Goro",
+  "numero": 8,
+  "piso": 7,
+  "puerta": 5,
+  "ciudad": "Transels",
+  "codigo_postal": 88870,
+  "telefono": 973212837,
+  "correo_electronico": "Juanji@gmail.com"
+},
+{
+  "_id": {
+    "$oid": "660c0947e09f26858a9c7547"
+  },
+  "nombre": "Paula",
+  "apellido": "DeMateis",
+  "calle": "Younno",
+  "numero": 2,
+  "piso": 4,
+  "puerta": 4,
+  "ciudad": "Mordor",
+  "codigo_postal": 88810,
+  "telefono": 832746378,
+  "correo_electronico": "PauDeMa@gmail.com"
+},
+{
+  "_id": {
+    "$oid": "660c0986e09f26858a9c7549"
+  },
+  "nombre": "Honimun",
+  "apellido": "Shahiri",
+  "calle": "Genova",
+  "numero": 5,
+  "piso": 3,
+  "puerta": 1,
+  "ciudad": "Tornstein",
+  "codigo_postal": 88880,
+  "telefono": 837462127,
+  "correo_electronico": "honsha@gmail.com"
+},
+{
+  "_id": {
+    "$oid": "660c09bbe09f26858a9c754b"
+  },
+  "nombre": "Bossardo",
+  "apellido": "Bossi",
+  "calle": "Cotiry",
+  "numero": 7,
+  "piso": 7,
+  "puerta": 2,
+  "ciudad": "Cornella",
+  "codigo_postal": 88860,
+  "telefono": 384598372,
+  "correo_electronico": "pomulo@gmail.com"
+}]
