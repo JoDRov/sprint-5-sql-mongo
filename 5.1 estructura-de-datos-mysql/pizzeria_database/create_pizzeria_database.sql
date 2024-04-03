@@ -74,6 +74,7 @@ DROP TABLE IF EXISTS pedidos;
 CREATE TABLE pedidos (
 	pedido_id INT NOT NULL AUTO_INCREMENT,
     cliente_id INT NOT NULL,
+    empleado_id INT NOT NULL,
     fecha_pedido TIMESTAMP NOT NULL DEFAULT (NOW()),
     entrega_id INT NOT NULL,
     producto_id INT NOT NULL,

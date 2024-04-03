@@ -31,12 +31,12 @@ VALUES
 ('Feast Show', 'Sunset Boulevard', 54, 6, '24680', 'Springfield', 'Anystate');
 
 -- Inserting data into pedidos table
-INSERT INTO pedidos (entrega_id, cliente_id, producto_id, cantidad, tienda_id) 
+INSERT INTO pedidos (entrega_id, cliente_id, empleado_id, producto_id, cantidad, tienda_id) 
 VALUES 
-(1, 1, 1, 2, 2),
-(1, 1, 3, 2, 2),
-(2, 3, 5, 1, 3),
-(2, 5, 3, 3, 1);
+(1, 1, 3, 1, 2, 2),
+(1, 1, 2, 3, 2, 2),
+(2, 3, 2, 5, 1, 3),
+(2, 5, 1, 3, 3, 1);
 
 -- Inserting data into categorias table
 INSERT INTO categorias (categoria_nombre) 

@@ -1,53 +1,13 @@
--- INFO PROVEEDORES 
+USE optica_db;
 
-SELECT *
-FROM proveedores;
+-- 1. Llista el total de compres d’un client/a.
 
--- INFO GAFAS
+SELECT * FROM clientes c JOIN ventas v USING (cliente_id) WHERE c.cliente_id = 3;
 
-SELECT 
-	gafa_id, 
-	gafa_nombre, 
-    mar.marca_nombre AS marca, 
-    grad_izq.graduacion_nombre AS graduacion_izquierda, 
-    grad_der.graduacion_nombre AS graduacion_derecha,
-    mont.montura_nombre AS montura,
-    col_mont.color_nombre AS color_montura,
-    col_cris.color_nombre AS color_cristal,
-    precio
-FROM gafas
-JOIN marcas mar 
-	USING (marca_id)
-JOIN graduaciones grad_izq
-	ON graduacion_id_izq = grad_izq.graduacion_id
-JOIN graduaciones grad_der
-	ON graduacion_id_der = grad_der.graduacion_id
-JOIN monturas mont 
-	USING (montura_id)
-JOIN colores col_mont
-	ON color_montura_id = col_mont.color_id
-JOIN colores col_cris
-	ON color_cristal_id = col_cris.color_id;
-    
--- INFO CLIENTES 
+-- 2. Llista les diferents ulleres que ha venut un empleat durant un any.
 
-SELECT *
-FROM clientes;
+SELECT * FROM gafas g JOIN ventas USING (gafa_id) JOIN empleados e USING (empleado_id) WHERE empleado_id = 1;
 
--- INFO ARTICULOS VENDIDOS Y SUS VENDEDORES
+-- 3. Llista els diferents proveïdors que han subministrat ulleres venudes amb èxit per l'òptica.
 
-SELECT 
-	venta_id,
-    gafa_nombre,
-    fecha_venta,
-    cliente_id,
-    cliente_nombre,
-    cliente_apellido,
-    empleado_id AS vendedor_id,
-    empleado_nombre AS vendedor_nombre, 
-    empleado_apellido AS vendedor_apellido
-FROM optica_db.ventas
-JOIN gafas USING (gafa_id)
-JOIN clientes USING (cliente_id)
-JOIN empleados USING (empleado_id)
-    
+SELECT DISTINCT m.proveedor_id, prv.proveedor_nombre, COUNT(*) AS numero_de_ventas FROM gafas gf JOIN marcas m USING (marca_id) JOIN ventas v USING (gafa_id) JOIN proveedores prv USING (proveedor_id) GROUP BY m.proveedor_id, prv.proveedor_nombre ORDER BY prv.proveedor_id
