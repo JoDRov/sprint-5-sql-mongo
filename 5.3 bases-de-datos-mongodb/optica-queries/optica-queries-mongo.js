@@ -4,6 +4,7 @@ db.clientes.find({ cliente_id: '660bf8bcdceb7948eccae426' })
 db.pedidos.find({ cliente_id: '660bf8bcdceb7948eccae426' }).limit(1)
 db.gafas.find({ _id: ObjectId("660a0474dceb7948eccae401") })
 
+
 // schema
 /*
 {
