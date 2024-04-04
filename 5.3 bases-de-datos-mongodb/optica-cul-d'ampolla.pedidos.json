@@ -1,0 +1,30 @@
+[{
+  "_id": {
+    "$oid": "660d3791cb3aecb2c2a10b99"
+  },
+  "gafa_id": "660a037adceb7948eccae3fb",
+  "cliente_id": "660a0a64dceb7948eccae40c",
+  "empleado_id": "660c08ace09f26858a9c7543",
+  "proveedor_id": "660a0119dceb7948eccae3f2",
+  "fecha_pedido": "2018-10-07T06:30:15Z"
+},
+{
+  "_id": {
+    "$oid": "660d37f0cb3aecb2c2a10b9b"
+  },
+  "gafa_id": "660a05d5dceb7948eccae405",
+  "cliente_id": "660bf87fdceb7948eccae424",
+  "empleado_id": "660c0947e09f26858a9c7547",
+  "proveedor_id": "660a015ddceb7948eccae3f6",
+  "fecha_pedido": "2019-12-16T20:45:22Z"
+},
+{
+  "_id": {
+    "$oid": "660d3850cb3aecb2c2a10b9d"
+  },
+  "gafa_id": "660a0474dceb7948eccae401",
+  "cliente_id": "660bf8bcdceb7948eccae426",
+  "empleado_id": "660c0986e09f26858a9c7549",
+  "proveedor_id": "660a018adceb7948eccae3f8",
+  "fecha_pedido": "2020-04-26T11:12:13Z"
+}]
