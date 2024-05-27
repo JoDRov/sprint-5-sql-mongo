@@ -1,5 +1,3 @@
--- DUDAS JUAN CARLOS: recomendacion cliente implemetarlo, periodo de tiempo de ventas
-
 DROP DATABASE IF EXISTS optica_db;
 
 CREATE DATABASE optica_db;
