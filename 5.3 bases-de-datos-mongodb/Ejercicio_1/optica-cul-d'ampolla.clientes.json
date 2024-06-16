@@ -1,0 +1,10 @@
+{
+  "clienteId": "ObjectId",
+  "nombre": "String",
+  "apellido": "String",
+  "direccion": "String",
+  "telefono": "String",
+  "correo_electronico": "String",
+  "fecha_registro": "ISODate",
+  "ultima_compra_id": "ObjectId"
+}

@@ -1,0 +1,13 @@
+{
+  "empleadoId": "ObjectId",
+  "nombre": "String",
+  "apellido": "String",
+  "calle": "String",
+  "numero": "Number",
+  "piso": "Number",
+  "puerta": "Number",
+  "ciudad": "String",
+  "codigo_postal": "Number",
+  "telefono": "Number",
+  "correo_electronico": "String"
+}

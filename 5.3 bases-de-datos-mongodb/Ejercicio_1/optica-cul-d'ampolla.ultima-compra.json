@@ -1,0 +1,10 @@
+{
+    "ventaId": "ObjectId",
+    "marca": "Stering",
+    "graduacionIzq": "Number",
+    "graduacionDer": "Number",
+    "colorCristalIzq": "String",
+    "colorCristalDer": "String",
+    "tipoMontura": "String",
+    "precio": "Number"
+}

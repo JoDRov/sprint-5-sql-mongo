@@ -1,0 +1,16 @@
+{
+  "proveedorId": "ObjectId",
+  "nombre": "String",
+  "direccion": {
+    "calle": "String",
+    "numero": "Number",
+    "piso": "Number",
+    "puerta": "Number",
+    "ciudad": "String",
+    "codigo_postal": "Number",
+    "pais": "String"
+  },
+  "telefono": "Number",
+  "fax": "Number",
+  "nif": "Number"
+}

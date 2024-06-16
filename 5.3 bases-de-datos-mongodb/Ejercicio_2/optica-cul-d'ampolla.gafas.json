@@ -1,0 +1,8 @@
+{
+  "gafaId": "ObjectId",
+  "nombre": "String",
+  "marca": "String",
+  "montura": "String",
+  "proveedor": "ObjectId",
+  "precio": "Number"
+}

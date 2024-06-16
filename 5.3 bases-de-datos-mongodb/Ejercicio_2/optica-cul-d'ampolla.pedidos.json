@@ -1,0 +1,8 @@
+{
+  "pedidoId": "ObjectId",
+  "gafa_id": "ObjectId",
+  "cliente_id": "ObjectId",
+  "empleado_id": "ObjectId",
+  "proveedor_id": "ObjectId",
+  "fecha_pedido": "ISODate"
+}
