@@ -202,15 +202,15 @@ SELECT p.apellido1, p.apellido2, p.nombre, d.nombre FROM persona p JOIN profesor
 
 -- 7. Retorna un llistat amb el nom de les assignatures, any d'inici i any de fi del curs escolar de l'alumne/a amb NIF 26902806M.
 
-SELECT p.nombre, ce.anyo_inicio, ce.anyo_fin FROM persona p JOIN curso_escolar ce USING (id) WHERE p.nif = '26902806M';
+SELECT asig.nombre AS nombre_asignatura, ce.anyo_inicio, ce.anyo_fin FROM alumno_se_matricula_asignatura asm JOIN curso_escolar ce ON asm.id_curso_escolar = ce.id JOIN asignatura asig ON asm.id_asignatura = asig.id JOIN persona p ON asm.id_alumno = p.id WHERE p.nif = '26902806M';
 
 -- 8. Retorna un llistat amb el nom de tots els departaments que tenen professors/es que imparteixen alguna assignatura en el Grau en Enginyeria Informàtica (Pla 2015).
 
-SELECT d.nombre AS nombre_departamento FROM profesor prf JOIN departamento d ON prf.id_departamento = d.id JOIN asignatura a USING (id_profesor) JOIN grado g ON a.id_grado = g.id WHERE g.id = 4;
+SELECT DISTINCT d.nombre AS nombre_departamento FROM departamento d JOIN profesor pr ON d.id = pr.id_departamento JOIN asignatura asig ON pr.id_profesor = asig.id_profesor JOIN grado g ON asig.id_grado = g.id WHERE g.id = 4;
 
 -- 9. Retorna un llistat amb tots els alumnes que s'han matriculat en alguna assignatura durant el curs escolar 2018/2019.
 
-SELECT * FROM alumno_se_matricula_asignatura asma JOIN persona p ON asma.id_alumno = p.id JOIN curso_escolar c ON asma.id_curso_escolar = c.id WHERE c.anyo_inicio BETWEEN 2018 AND 2019;
+SELECT p.nombre AS nombre_alumno, p.apellido1 AS primer_apellido, p.apellido2 AS segundo_apellido, p.nif AS nif_alumno FROM alumno_se_matricula_asignatura asm JOIN curso_escolar ce ON asm.id_curso_escolar = ce.id JOIN persona p ON asm.id_alumno = p.id WHERE ce.anyo_inicio = 2018 AND ce.anyo_fin = 2019;
 
 -- Resol les 6 següents consultes utilitzant les clàusules LEFT JOIN i RIGHT JOIN.
 
