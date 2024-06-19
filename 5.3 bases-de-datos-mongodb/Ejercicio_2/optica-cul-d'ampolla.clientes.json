@@ -22,18 +22,5 @@
     "telefono": "String",
     "correo_electronico": "String",
     "fecha_registro": "ISODate"
-  },
-  "vendido_por": {
-    "nombre": "String",
-    "apellido": "String",
-    "calle": "String",
-    "numero": "Number",
-    "piso": "Number",
-    "puerta": "Number",
-    "ciudad": "String",
-    "codigo_postal": "Number",
-    "telefono": "Number",
-    "correo_electronico": "String",
-    "fecha_venta": "ISODate"
   }
 }

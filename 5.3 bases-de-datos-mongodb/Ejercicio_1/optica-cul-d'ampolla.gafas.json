@@ -1,0 +1,11 @@
+{
+  "gafaId": "ObjectId",
+  "marca": "String",
+  "montura": "String",
+  "color_montura": "String",
+  "graduacion_izq": "Number",
+  "graduacion_der": "Number",
+  "color_cristal_izq": "String",
+  "color_cristal_der": "String",
+  "precio": "Number"
+}

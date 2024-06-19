@@ -1,8 +1,34 @@
 {
   "gafaId": "ObjectId",
-  "nombre": "String",
   "marca": "String",
   "montura": "String",
-  "proveedor": "ObjectId",
-  "precio": "Number"
+  "color_montura": "String",
+  "graduacion_izq": "Number",
+  "graduacion_der": "Number",
+  "color_cristal_izq": "String",
+  "color_cristal_der": "String",
+  "proveedor": {
+    "nombre": "String",
+    "direccion": {
+      "calle": "String",
+      "numero": "Number",
+      "piso": "Number",
+      "puerta": "Number",
+      "ciudad": "String",
+      "codigo_postal": "Number",
+      "pais": "String"
+    },
+    "telefono": "Number",
+    "fax": "Number",
+    "nif": "Number"
+  },
+  "precio": "Number",
+  "comprado_por": {
+    "nombre": "String",
+    "apellido": "String",
+    "direccion": "String",
+    "telefono": "String",
+    "correo_electronico": "String",
+    "fecha_registro": "ISODate"
+  }
 }
