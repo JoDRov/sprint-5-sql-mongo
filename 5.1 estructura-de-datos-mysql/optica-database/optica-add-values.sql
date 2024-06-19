@@ -1,13 +1,5 @@
 -- --------------------------------------------------------------------------------------------------------------------- 1. Añadimos proveedores
 
-DELETE FROM info_empresa;
-
-INSERT INTO info_empresa (empresa_nombre, calle, numero, piso, puerta, ciudad, codigo_postal, pais, telefono, fax)
-VALUES
-("Cul d'Ampolla", 'Patata', 9, 4, 2, 'Viladecans', 08840, 'España', 372917483, 7683236284693);
-
--- --------------------------------------------------------------------------------------------------------------------- 1. Añadimos proveedores
-
 DELETE FROM proveedores;
 
 INSERT INTO proveedores (proveedor_nombre, calle, numero, piso, puerta, ciudad, codigo_postal, pais, telefono, fax, nif)
@@ -45,52 +37,20 @@ VALUES
 ('trend', 5),
 ('beo', 5);
 
--- --------------------------------------------------------------------------------------------------------------------- 3. Añadimos graduaciones
-
-DELETE FROM graduaciones;
-
-INSERT INTO graduaciones (graduacion_nombre)
-VALUES
-('1.5'),
-('1.6'),
-('1.67'),
-('1.74');
-
--- --------------------------------------------------------------------------------------------------------------------- 4. Añadimos monturas
-
-DELETE FROM monturas;
-
-INSERT INTO monturas (montura_nombre)
-VALUES
-('flotante'),
-('pasta'),
-('metalica');
-
--- --------------------------------------------------------------------------------------------------------------------- 5. Añadimos colores
-
-DELETE FROM colores;
-
-INSERT INTO colores (color_nombre)
-VALUES 
-('rojo'),
-('azul'),
-('verde'),
-('amarillo'),
-('rosa'),
-('negro');
-
--- --------------------------------------------------------------------------------------------------------------------- 5. Añadimos gafas
+-- --------------------------------------------------------------------------------------------------------------------- 3. Añadimos gafas
 
 DELETE FROM gafas;
 
-INSERT INTO gafas (gafa_nombre, marca_id, graduacion_id_izq, graduacion_id_der, montura_id, color_montura_id, color_cristal_id, precio)
+INSERT INTO gafas (gafa_nombre, marca_id, graduacion_izq, graduacion_der, tipo_montura, color_montura, color_cristal, precio)
 VALUES
-('super_gafa', '7', 1, 1, 3, 1, 6, 1250),
-('bat_gafas', '1', 3, 2, 2, 2, 2, 299),
-('robinson', '9', 4, 2, 1, 3, 4, 50),
-('cortels', '20', 3, 1, 1, 4, 5, 70),
-('rocker', '17', 3, 4, 2, 5, 1, 119),
-('zumber_gafas', '15', 1, 4, 3, 6, 2, 199);
+('super_gafa', 7, 1.5, 1.6, 'flotante', 'negro', 'rojo', 1250),
+('bat_gafas', 1, 1.74, 1.5, 'pasta', 'rojo', 'azul', 299),
+('robinson', 9, 1.5, 1.5, 'flotante', 'azul', 'amarillo', 50),
+('cortels', 20, 1.74, 1.67, 'metalica', 'naranja', 'negro', 70),
+('rocker', 17, 1.5, 1.59, 'flotante', 'negro', 'naranja', 119),
+('zumber_gafas', 15, 1.5, 1.6, 'pasta', 'marron', 'verde', 199);
+
+-- --------------------------------------------------------------------------------------------------------------------- 3. Añadimos clientes
 
 DELETE FROM clientes;
 
@@ -102,23 +62,15 @@ VALUES
 ('Ander', 'ElRocas', 5, 2, 1, 5, 'Stratholme', 73826, 'España', 283719476, 'andersito_maravillas@gmail.com'),
 ('Kimimaro', 'Lee', 21, 10, 4, 2, 'Brodway', 64738, 'España', 754832907, 'kimi@gmail.com');
 
-DELETE FROM rangos;
-
-INSERT INTO rangos (rango_nombre)
-VALUES 
-('empleado'),
-('superior/entrenador'),
-('ceo');
-
 DELETE FROM empleados;
 
-INSERT INTO empleados (rango_id, empleado_nombre, empleado_apellido, calle, numero, piso, puerta, ciudad, codigo_postal, pais, telefono, correo_electronico)
+INSERT INTO empleados (rango, empleado_nombre, empleado_apellido, calle, numero, piso, puerta, ciudad, codigo_postal, pais, telefono, correo_electronico)
 VALUES 
-(1, 'Juanjo', 'Amoros', 'Solsticio', 4, 6, 3, 'Viladecans', 08840, 'España', 743826487, 'Juanjito@gmail.com'),
-(1, 'John', 'Salchichon', 'Goro', 8, 7, 5, 'Transels', 08870, 'España', 973212837, 'Junji@gmail.com'),
-(1, 'Paula', 'DeMateis', 'Younno', 2, 4, 4, 'Mordor', 08810, 'España', 832746378, 'PauDeMa@gmail.com'),
-(2, 'Honimun', 'Shahiri', 'Genova', 5, 3, 1, 'Tornstein', 08880, 'España', 837462127, 'honsha@gmail.com'),
-(3, 'Bossardo', 'Bossi', 'Cotiry', 7, 7, 2, 'Cornella', 08860, 'España', 384598372, 'Pomulo@gmail.com');
+('vendedor', 'Juanjo', 'Amoros', 'Solsticio', 4, 6, 3, 'Viladecans', 08840, 'España', 743826487, 'Juanjito@gmail.com'),
+('vendedor', 'John', 'Salchichon', 'Goro', 8, 7, 5, 'Transels', 08870, 'España', 973212837, 'Junji@gmail.com'),
+('vendedor', 'Paula', 'DeMateis', 'Younno', 2, 4, 4, 'Mordor', 08810, 'España', 832746378, 'PauDeMa@gmail.com'),
+('vendedor', 'Honimun', 'Shahiri', 'Genova', 5, 3, 1, 'Tornstein', 08880, 'España', 837462127, 'honsha@gmail.com'),
+('ceo', 'Bossardo', 'Bossi', 'Cotiry', 7, 7, 2, 'Cornella', 08860, 'España', 384598372, 'Pomulo@gmail.com');
 
 DELETE FROM ventas;
 
@@ -132,4 +84,3 @@ VALUES
 (3, 2, 1),
 (6, 3, 2),
 (3, 4, 5);
-
